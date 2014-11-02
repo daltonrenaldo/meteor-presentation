@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Meteor Presentation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -21,7 +21,7 @@
         width: 20%;
         height: 92%;
         float: left;
-        margin-top: 15%;
+        margin-top: 13%;
       }
       .right-column {
         width: 75%;
@@ -50,6 +50,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # Introduction
@@ -65,6 +67,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # Introduction
@@ -82,6 +86,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # Introduction
@@ -101,6 +107,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # So, what?
@@ -118,6 +126,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # So, what?
@@ -136,6 +146,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # So, what?
@@ -161,6 +173,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # So, what?
@@ -183,6 +197,8 @@
         #### Install Meteor
         #### Build an App
         #### Deploy App
+        #### Mobile App
+        #### Questions
       ]
       .right-column[
         # So, what?
@@ -198,11 +214,551 @@
          - In Meteor, realtime is the default. All layers, from database to template, update themselves automatically when necessary.
       ]
 
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        ####.current[Example]
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        #### Mobile App
+        #### Questions
+      ]
+      .right-column[
+        # Alright, show me!
+        ```shell
+      todos.js    # a JavaScript file loaded on both client &amp; server
+      todos.html  # a HTML file that defines view templates
+      todos.css   # a CSS file to define your app's styles
+      .meteor     # internal Meteor files
+        ```
+      ] 
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        ####.current[Example]
+        - .current[todos.html]
+        - todos.js
+        - todos.css
+
+      #### Install Meteor
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Alright, show me!
+        ```html
+        <!-- todos.html -->
+        <head>
+          <title>Todo List</title>
+        </head>
+
+        <body>
+          <div class="container">
+            <header>
+              <h1>Todo List</h1>
+            </header>
+
+            <ul>
+              {{#each tasks}}
+                {{> task}}
+              {{/each}}
+            </ul>
+          </div>
+        </body>
+
+        <template name="task">
+          <li>{{text}}</li>
+        </template>
+        ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        ####.current[Example]
+        - todos.html
+        - .current[todos.js]
+        - todos.css
+
+      #### Install Meteor
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Alright, show me!
+        ```javascript
+        // todos.js
+        Tasks = new Mongo.Collection("tasks");
+
+        if (Meteor.isClient) {
+          // This code only runs on the client
+          Template.body.helpers({
+            tasks: function () {
+              return Tasks.find({});
+            }
+          });
+        }
+
+        if (Meteor.isServer) {
+          Meteor.startup(function () {
+            // code to run server side here...
+          });
+        }
+        ```
+      ] 
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        ####.current[Example]
+        - todos.html
+        - todos.js
+        - .current[todos.css]
+
+      #### Install Meteor
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Alright, show me!
+        ```CSS
+        /* CSS declarations go here */
+        ul {
+          margin: 0;
+          padding: 0;
+          background: white;
+        }
+
+        li {
+          position: relative;
+          list-style: none;
+          padding: 15px;
+          border-bottom: #eee solid 1px;
+        }
+
+        /* More style... */
+        ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - .current[linux/mac]
+        - windows
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        Open terminal, and drop this line.
+
+        ```bash
+        curl https://install.meteor.com/ | sh
+        ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - linux/mac
+        - .current[windows]
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        - The *official* installer supports Mac OS X 10.6 (Snow Leopard) and above, and Linux on x86 and x86_64 architectures.
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - linux/mac
+        - .current[windows]
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        - The *official* installer supports Mac OS X 10.6 (Snow Leopard) and above, and Linux on x86 and x86_64 architectures.
+        
+        - win.meteor.com (version 0.8.3)
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - linux/mac
+        - .current[windows]
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        - The *official* installer supports Mac OS X 10.6 (Snow Leopard) and above, and Linux on x86 and x86_64 architectures.
+        
+        - win.meteor.com (version 0.8.3)
+
+        - or meteorpad.com (version 0.9.4)
+         - goo.gl/p7fHeD (http://meteorpad.com/pad/cHQ2FjhPErKLzW64g)
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - linux/mac
+        - .current[windows]
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        - The *official* installer supports Mac OS X 10.6 (Snow Leopard) and above, and Linux on x86 and x86_64 architectures.
+        
+        - win.meteor.com (version 0.8.3)
+
+        - or meteorpad.com (version 0.9.4)
+         - goo.gl/p7fHeD (http://meteorpad.com/pad/cHQ2FjhPErKLzW64g)
+
+        - codeanywhere.com
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        ####.current[Install Meteor]
+        - linux/mac
+        - .current[windows]
+
+      #### Build an App
+      #### Deploy App
+      #### Mobile App
+      #### Questions
+      ]
+      .right-column[
+        # Let's get Started
+        
+        - The *official* installer supports Mac OS X 10.6 (Snow Leopard) and above, and Linux on x86 and x86_64 architectures.
+        
+        - win.meteor.com (version 0.8.3)
+
+        - or meteorpad.com (version 0.9.4)
+         - goo.gl/p7fHeD (http://meteorpad.com/pad/cHQ2FjhPErKLzW64g)
+
+        - codeanywhere.com
+
+        - or switch to linux
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        ####.current[Build an App]
+        #### Deploy App
+        #### Mobile App
+        #### Questions
+      ]
+      .right-column[
+        # Finally, let's write some code
+        We will be building a messaging app.
+        
+        .center[<img src="bereachat1.png" height='430' alt="bereachat">]
+
+        <small>see code on [github](http://github.com/daltonrenaldo/chatr)</small>
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        ####.current[Deploy App]
+        #### Mobile App
+        #### Questions
+      ]
+      .right-column[
+        # Let's go live
+
+        To deploy app, run this command:
+
+        ```bash
+        meteor deploy NAME_OF_APP
+        ```
+
+        Meteor will deploy the app to <pre>NAME_OF_APP.meteor.com</pre>
+        
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        #### Questions
+
+      ]
+      .right-column[
+        # What?!! I can do mobile app too?
+        
+        .center[YES!!]
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        - ####.current[Android]
+        - #### iOS
+
+      #### Questions
+
+      ]
+      .right-column[
+        # What?!! I can do mobile app too?
+        
+        - First Download the android sdk:
+        ```bash
+        meteor install-sdk android
+        ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        - ####.current[Android]
+        - #### iOS
+
+      #### Questions
+      ]
+      .right-column[
+        # What?!! I can do mobile app too?
+        
+        - First Download the android sdk:
+        ```bash
+        meteor install-sdk android
+        ```
+
+        - Add the android platform, and accept the license terms
+        ```bash
+        meteor add-platform android
+        ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        - ####.current[Android]
+         - ##### .current[emulator]
+         - ##### device
+        - #### iOS
+
+      #### Questions
+      ]
+
+      .right-column[
+        # What?!! I can do mobile app too?
+
+        - Run on Emulator
+
+      ```bash
+      meteor run android
+      ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        - ####.current[Android]
+         - ##### emulator
+         - #####.current[device]
+        - #### iOS
+        
+      #### Questions
+      ]
+
+      .right-column[
+        # What?!! I can do mobile app too?
+
+        - Connect your android device
+        
+      ```bash
+      meteor run android-device
+        ```
+
+        - To run the app and connect it to the server we deployed earlier:
+      
+      ```bash
+      meteor run android-device --mobile-server app_name.meteor.com
+      ```
+      ]
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        ####.current[Mobile App]
+        - #### Android
+        - ####.current[iOS]
+        
+      #### Questions
+      ]
+      .right-column[
+        # What?!! I can do mobile app too?
+        You need a mac!
+
+        ```bash
+        meteor install-sdk ios
+        ```
+
+        Add the iOS platform and run the simulator
+        
+        ```bash
+        meteor add-platform ios
+        meteor run ios
+        ```
+      ]
+
+
+      ---
+
+      .left-column[
+        #### What is it?
+        #### Why use it?
+        #### Example
+        #### Install Meteor
+        #### Build an App
+        #### Deploy App
+        #### Mobile App
+        #### .current[Questions]
+
+      ]
+      .right-column[
+        # That's it! Questions?
+
+        - About me: 
+
+      Renaldo Pierre-Louis
+
+      @odlaner90
+
+      <br/>
+        - Resources:
+
+      ```bash
+      https://github.com/daltonrenaldo/chatr
+
+      https://github.com/daltonrenaldo/meteor-presentation
+      ```
+      ]
+
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">
-      var slideshow = remark.create();
+      var slideshow = remark.create({highlightStyle: 'monokai'});
     </script>
   </body>
 </html>
